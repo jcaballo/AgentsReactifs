@@ -9,6 +9,6 @@ class Environment: # Définition de notre classe Personne
             self.matrice.append([])
             for j in range(0, _j):
                 if i == 0 & j == 0:
-                    self.matrice[i].append(Agent(i, j))
+                    self.matrice[i].append(Agent(i, j, self))
                 else:
                     self.matrice[i].append(Empty(i, j))
