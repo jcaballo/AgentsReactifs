@@ -2,28 +2,44 @@ from random import *
 
 from Content import Content
 from Empty import Empty
+from tkinter import *
+
 
 
 class Agent(Content):
     def __init__(self, x, y, environment):
-        super(Agent, self).__init__(x, y)
+        super(Agent, self).__init__(x, y, environment.fenetre)
         self.environment = environment
+        self.label.config(bg="red")
 
     def next(self):
-        randx = random.randint(-1, 1)
-        randy = random.randint(-1, 1)
-        if isinstance(self.environment[self.x + randx][self.y + randy], Empty):
-            self.environment[self.x + randx][self.y + randy] = self
-            self.environment[self.x][self.y] = Empty(self.x, self.y)
+        randx = randint(-1, 1)
+        randy = randint(-1, 1)
+        if self.x + randx >= 0 \
+                and self.x + randx < self.environment.i \
+                and self.y + randy >= 0 \
+                and self.y + randy < self.environment.j \
+                and isinstance(self.environment.matrice[self.x + randx][self.y + randy], Empty):
+            self.environment.matrice[self.x + randx][self.y + randy] = self
+            self.environment.matrice[self.x][self.y] = Empty(self.x, self.y, self.fenetre)
             self.x = self.x + randx
             self.y = self.y + randy
 
-        elif isinstance(self.environment[self.x][self.y + randy], Empty):
-            self.environment[self.x][self.y + randy] = self
-            self.environment[self.x][self.y] = Empty(self.x, self.y)
+        elif self.y + randy >= 0 \
+                and self.y + randy < self.environment.j \
+                and isinstance(self.environment.matrice[self.x][self.y + randy], Empty):
+            self.environment.matrice[self.x][self.y + randy] = self
+            self.environment.matrice[self.x][self.y] = Empty(self.x, self.y, self.fenetre)
             self.y = self.y + randy
 
-        elif isinstance(self.environment[self.x + randx][self.y], Empty):
-            self.environment[self.x + randx][self.y] = self
-            self.environment[self.x][self.y] = Empty(self.x, self.y)
+        elif self.x + randx >= 0 \
+                and self.x + randx < self.environment.i \
+                and isinstance(self.environment.matrice[self.x + randx][self.y], Empty):
+            self.environment.matrice[self.x + randx][self.y] = self
+            self.environment.matrice[self.x][self.y] = Empty(self.x, self.y, self.fenetre)
             self.x = self.x + randx
+
+        print(self.x, " | ", self.y)
+
+        self.label = Label(self.fenetre, text="%s" % (type(self)), bg="red" )
+        self.label.grid(row=self.x, column=self.y, padx=(10,10) ,pady=(10,10))
