@@ -1,7 +1,3 @@
 from Environment import Environment
-from tkinter import *
 
-Environment(10,10)
-
-
-
+Environment(30, 30)

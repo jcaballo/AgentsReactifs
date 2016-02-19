@@ -1,8 +1,8 @@
 from random import *
+from tkinter import *
 
 from Content import Content
 from Empty import Empty
-from tkinter import *
 
 
 
@@ -10,7 +10,6 @@ class Agent(Content):
     def __init__(self, x, y, environment):
         super(Agent, self).__init__(x, y, environment.fenetre)
         self.environment = environment
-        self.label.config(bg="red")
 
     def next(self):
         randx = randint(-1, 1)
@@ -39,7 +38,5 @@ class Agent(Content):
             self.environment.matrice[self.x][self.y] = Empty(self.x, self.y, self.fenetre)
             self.x = self.x + randx
 
-        print(self.x, " | ", self.y)
-
-        self.label = Label(self.fenetre, text="%s" % (type(self)), bg="red" )
-        self.label.grid(row=self.x, column=self.y, padx=(10,10) ,pady=(10,10))
+        self.label = Label(self.fenetre, text="%s" % "    ", bg="red")
+        self.label.grid(row=self.x, column=self.y, padx=(1, 1), pady=(1, 1))

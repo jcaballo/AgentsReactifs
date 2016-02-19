@@ -5,5 +5,5 @@ class Content():
         self.x = x
         self.y = y
         self.fenetre = fenetre
-        self.label = Label(fenetre, text="%s" % (type(self)), bg="lightgrey" )
-        self.label.grid(row=self.x, column=self.y, padx=(10,10) ,pady=(10,10))
+        self.label = Label(fenetre, text="%s" % "    ", bg="lightgrey")
+        self.label.grid(row=self.x, column=self.y, padx=(1, 1), pady=(1, 1))
