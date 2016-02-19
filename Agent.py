@@ -38,5 +38,5 @@ class Agent(Content):
             self.environment.matrice[self.x][self.y] = Empty(self.x, self.y, self.fenetre)
             self.x = self.x + randx
 
-        self.label = Label(self.fenetre, text="%s" % "    ", bg="red")
-        self.label.grid(row=self.x, column=self.y, padx=(1, 1), pady=(1, 1))
+        self.label = Label(self.fenetre, text="%s" % "    ",  bg="red" )
+        self.label.grid(row=self.x, column=self.y, padx=(1,1) ,pady=(1,1))

@@ -11,9 +11,8 @@ class Station(Agent):
         self.label.config(bg="yellow")
 
     def next(self):
-        if (isinstance(self.environment.matrice[self.environment.i - 2][self.environment.j - 1],
-                       Empty) and self.nbExplorateur > 0):
-            explorateur = Explorateur(self.environment.i - 2, self.environment.j - 1, self.environment)
-            self.environment.matrice[self.environment.i - 2][self.environment.j - 1] = explorateur
+        if(isinstance(self.environment.matrice[self.environment.i -2][self.environment.j -1] , Empty) and self.nbExplorateur >0):
+            explorateur = Explorateur(self.environment.i -2, self.environment.j -1, self.environment)
+            self.environment.matrice[self.environment.i -2][self.environment.j -1]=explorateur
             self.environment.agents.append(explorateur)
-            self.nbExplorateur -= 1
+            self.nbExplorateur-=1
